@@ -18,7 +18,7 @@ public class TestDI {
     public static void main(String[] args) {
         // 初始化容器, 加載xml
         ApplicationContext  context = new ClassPathXmlApplicationContext("ch02springIoC\\bookExample\\applicationContext.xml");
-        // 通過容器獲得testDIService實體, 測試構造方法注入
+        // 通過容器獲得testDIService實體, 測試建構子注入
         TestDIService ts = (TestDIService) context.getBean("testDIService");
         ts.sayHello();
         

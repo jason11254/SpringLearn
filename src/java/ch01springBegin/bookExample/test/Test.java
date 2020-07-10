@@ -18,7 +18,7 @@ public class Test {
     public static void main(String[] args) {
         // 初始化ApplicationContext Spring容器, 載入xml檔案
         ApplicationContext appCon = new ClassPathXmlApplicationContext("ch01springBegin\\bookExample\\applicationContext.xml");
-        // 通過容器取得test實例
+        // 通過容器取得test實體
         TestDao tt = (TestDao)appCon.getBean("test");
         tt.sayHello();
     }
