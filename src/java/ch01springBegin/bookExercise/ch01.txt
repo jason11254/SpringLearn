@@ -1,0 +1,11 @@
+1.Spring的核心容器由哪些模塊組成?
+核心容器:Spring-core,Spring-beans,Spring-context,Spring-context-support,Spring-exception
+備註:
+消息:Spring-messaging
+資料訪問/整合:Spring-jdbc,Spring-orm,Spring-oxm,Spring-jms,Spring-tx
+Web:Spring-web,Spring-webmvc,Spring-websocket,Portlet
+測試:Spring-test
+其他:Spring-aop,Spring-aspexts,Spring-insturment
+
+2.如何找到Spring的官方API?
+https://repo.spring.io/release/org/springframework/spring/

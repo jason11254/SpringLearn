@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="Big5"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans               
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+        <bean id="thebread" class="ch02springIoC.selfpractice.dao.Bakery"/>
+        <bean id="purchase" class="ch02springIoC.selfpractice.service.Purchaser">
+            <constructor-arg ref="thebread"/>
+        </bean>
+        <bean id="purchase2" class="ch02springIoC.selfpractice.service.PurchaserSec">
+            <property name="bread" ref="thebread"/>
+        </bean>
+        <bean id="purchase3" class="ch02springIoC.selfpractice.service.PurchaserThir">
+            <property name="bread" ref="thebread"/>
+        </bean>
+</beans>

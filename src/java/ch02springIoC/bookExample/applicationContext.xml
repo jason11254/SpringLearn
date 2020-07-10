@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="Big5"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans               
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       ">
+        <!-- 將指定類別TestDIDaoImpl 配置給spring 讓其建立實體 -->
+       <bean id="myTestDIDao" class="ch02springIoC.bookExample.dao.TestDIDaoImpl"/>
+        <!-- 使用構造方法注入-->
+       <bean id="testDIService" class="ch02springIoC.bookExample.service.TestDIServiceImpl"> 
+            <!-- 將myTestDIDao 注入TestDIServiceImpl 的testDiDao上 -->
+            <constructor-arg index="0" ref="myTestDIDao"/>
+       </bean>
+
+       <!-- 使用setter方法注入 -->
+       <bean id="testDIService2" class="ch02springIoC.bookExample.service.TestDIServiceImpl2">
+            <!-- 調用 TestDIServiceImpl2 的setter方法 將myTestDIDao 注入TestDIServiceImpl2 的testDIDao上 -->
+            <property name="testDIDao" ref="myTestDIDao"/>
+       </bean>
+</beans>
