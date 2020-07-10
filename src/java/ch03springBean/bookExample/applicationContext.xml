@@ -3,97 +3,97 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
-       http://www.springframework.org/schema/context               
-       http://www.springframework.org/schema/beans/spring-context.xsd
+       http://www.springframework.org/schema/context 
+       http://www.springframework.org/schema/context/spring-context.xsd
        http://www.springframework.org/schema/beans               
        http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
-       <!-- Bean的實體化 -->
-       <!-- 建構子實體化Bean-->
-       <bean id="constructorInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
-       <!-- 靜態工廠方法實體化Bean-->
-       <!-- createInstance 為 BeanStaticFactory 中的靜態方法 -->
-       <bean id="staticFactoryInstance" class="ch03springBean.bookExample.instance.BeanStaticFactory" factory-method="createInstance" />
-       <!-- 實體工廠方法實體化Bean-->
-       <!--配置工廠-->
-       <bean id="myFactory" class="ch03springBean.bookExample.instance.BeanInstanceFactory"/>
-       <!-- 使用 factory-bean 屬性指定配置工廠, 使用 factory-method屬性指定使用工廠中的哪一個方法實體化Bean -->
-       <bean id="instanceFactoryInstance" factory-bean="myFactory" factory-method="createBeanClassInstance"/>
+    <!-- Bean的實體化 -->
+    <!-- 建構子實體化Bean-->
+    <bean id="constructorInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
+    <!-- 靜態工廠方法實體化Bean-->
+    <!-- createInstance 為 BeanStaticFactory 中的靜態方法 -->
+    <bean id="staticFactoryInstance" class="ch03springBean.bookExample.instance.BeanStaticFactory" factory-method="createInstance" />
+    <!-- 實體工廠方法實體化Bean-->
+    <!--配置工廠-->
+    <bean id="myFactory" class="ch03springBean.bookExample.instance.BeanInstanceFactory"/>
+    <!-- 使用 factory-bean 屬性指定配置工廠, 使用 factory-method屬性指定使用工廠中的哪一個方法實體化Bean -->
+    <bean id="instanceFactoryInstance" factory-bean="myFactory" factory-method="createBeanClassInstance"/>
        
-       <!-- Bean的作用域 -->
-       <!-- 建構子實體化Bean scope默認為singleton-->
-       <bean id="singletonInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
-       <!-- 建構子實體化Bean scope設定為prototype-->
-       <bean id="prototypeInstance" class="ch03springBean.bookExample.instance.BeanClass" scope="prototype"/>
+    <!-- Bean的作用域 -->
+    <!-- 建構子實體化Bean scope默認為singleton-->
+    <bean id="singletonInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
+    <!-- 建構子實體化Bean scope設定為prototype-->
+    <bean id="prototypeInstance" class="ch03springBean.bookExample.instance.BeanClass" scope="prototype"/>
        
-       <!-- Bean的生命週期 -->
-       <!-- 配置Bean, 使用init-method屬性指定初始化方法 destroy-method屬性指定銷毀方法 -->
-       <bean id="beanLife" class="ch03springBean.bookExample.life.BeanLife" init-method="initMyself" destroy-method="destroyMyself"/>
+    <!-- Bean的生命週期 -->
+    <!-- 配置Bean, 使用init-method屬性指定初始化方法 destroy-method屬性指定銷毀方法 -->
+    <bean id="beanLife" class="ch03springBean.bookExample.life.BeanLife" init-method="initMyself" destroy-method="destroyMyself"/>
        
-       <!-- Bean的裝配方式 -->
-       <!-- 基於XML配置裝配 -->
-       <!-- 使用建構子配置實體user1 -->
-       <bean id="user1" class="ch03springBean.bookExample.assemble.ComplexUesr">
-            <constructor-arg index="0" value="chenheng1"/>
-            <constructor-arg index="1">
-                <list>
-                    <value>唱歌</value>
-                    <value>跳舞</value>
-                    <value>爬山</value>
-                </list>
-            </constructor-arg>
-            <constructor-arg index="2">
-                <map>
-                    <entry key="dalian" value="大連"/>
-                    <entry key="beijing" value="北京"/>
-                    <entry key="shanghai" value="上海"/>
-                </map>
-            </constructor-arg>
-            <constructor-arg index="3">
-                <set>
-                    <value>陳恆 100</value>
-                    <value>陳恆 101</value>
-                    <value>陳恆 102</value>
-                </set>
-            </constructor-arg>
-            <constructor-arg index="4">
-                <array>
-                    <value>aaaaa</value>
-                    <value>bbbbb</value>
-                </array>
-            </constructor-arg>
-       </bean>
-       <!-- 使用setter 配置實體user2 -->
-       <bean id="user2" class="ch03springBean.bookExample.assemble.ComplexUesr">
-            <property name="uname" value="chenheng2"/>
-            <property name="hobbyList">
-                <list>
-                    <value>看書</value>
-                    <value>學習</value>
-                </list>
-            </property>
-            <property name="residenceMap">
-                <map>
-                    <entry key="shenzhen" value="深圳"/>
-                    <entry key="gaungzhou" value="廣州"/>
-                    <entry key="tianjin" value="天津"/>
-                </map>
-            </property>
-            <property name="aliasSet">
-                <set>
-                    <value>陳恆 103</value>
-                    <value>陳恆 104</value>
-                    <value>陳恆 105</value>
-                </set>
-            </property>
-            <property name="array">
-                <array>
-                    <value>ccccc</value>
-                    <value>ddddd</value>
-                </array>
-            </property>
-       </bean>
-       <!-- 基於註解的裝配 -->
-       <!-- 使用context命名空間,通過spring指定掃描annotation以及其下所有Bean實現類別,進行註解解析 -->
-       
+    <!-- Bean的裝配方式 -->
+    <!-- 基於XML配置裝配 -->
+    <!-- 使用建構子配置實體user1 -->
+    <bean id="user1" class="ch03springBean.bookExample.assemble.ComplexUesr">
+        <constructor-arg index="0" value="chenheng1"/>
+        <constructor-arg index="1">
+            <list>
+                <value>唱歌</value>
+                <value>跳舞</value>
+                <value>爬山</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg index="2">
+            <map>
+                <entry key="dalian" value="大連"/>
+                <entry key="beijing" value="北京"/>
+                <entry key="shanghai" value="上海"/>
+            </map>
+        </constructor-arg>
+        <constructor-arg index="3">
+            <set>
+                <value>陳恆 100</value>
+                <value>陳恆 101</value>
+                <value>陳恆 102</value>
+            </set>
+        </constructor-arg>
+        <constructor-arg index="4">
+            <array>
+                <value>aaaaa</value>
+                <value>bbbbb</value>
+            </array>
+        </constructor-arg>
+    </bean>
+    <!-- 使用setter 配置實體user2 -->
+    <bean id="user2" class="ch03springBean.bookExample.assemble.ComplexUesr">
+        <property name="uname" value="chenheng2"/>
+        <property name="hobbyList">
+            <list>
+                <value>看書</value>
+                <value>學習</value>
+            </list>
+        </property>
+        <property name="residenceMap">
+            <map>
+                <entry key="shenzhen" value="深圳"/>
+                <entry key="gaungzhou" value="廣州"/>
+                <entry key="tianjin" value="天津"/>
+            </map>
+        </property>
+        <property name="aliasSet">
+            <set>
+                <value>陳恆 103</value>
+                <value>陳恆 104</value>
+                <value>陳恆 105</value>
+            </set>
+        </property>
+        <property name="array">
+            <array>
+                <value>ccccc</value>
+                <value>ddddd</value>
+            </array>
+        </property>
+    </bean>
+    <!-- 基於註解的裝配 -->
+    <!-- 使用context命名空間,通過spring指定掃描annotation以及其下所有Bean實現類別,進行註解解析 -->
+    <context:component-scan base-package="ch03springBean.bookExample.annotation"/>
 </beans>
