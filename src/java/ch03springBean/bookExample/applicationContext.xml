@@ -5,5 +5,23 @@
        http://www.springframework.org/schema/beans               
        http://www.springframework.org/schema/beans/spring-beans.xsd
        ">
+       <!-- Bean的實體化 -->
+       <!-- 建構子實體化Bean-->
        <bean id="constructorInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
+       <!-- 靜態工廠方法實體化Bean-->
+       <!-- createInstance 為 BeanStaticFactory 中的靜態方法 -->
+       <bean id="staticFactoryInstance" class="ch03springBean.bookExample.instance.BeanStaticFactory" factory-method="createInstance" />
+       <!-- 實體工廠方法實體化Bean-->
+       <!--配置工廠-->
+       <bean id="myFactory" class="ch03springBean.bookExample.instance.BeanInstanceFactory"/>
+       <!-- 使用 factory-bean 屬性指定配置工廠, 使用 factory-method屬性指定使用工廠中的哪一個方法實體化Bean -->
+       <bean id="instanceFactoryInstance" factory-bean="myFactory" factory-method="createBeanClassInstance"/>
+       
+       <!-- Bean的作用域 -->
+       <!-- 建構子實體化Bean scope默認為singleton-->
+       <bean id="singletonInstance" class="ch03springBean.bookExample.instance.BeanClass"/>
+       <!-- 建構子實體化Bean scope設定為prototype-->
+       <bean id="prototypeInstance" class="ch03springBean.bookExample.instance.BeanClass" scope="prototype"/>
+       
+       <!-- Bean的生命週期 -->
 </beans>
