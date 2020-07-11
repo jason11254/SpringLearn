@@ -1,0 +1,13 @@
+1.Bean的實體化有哪些方式?
+建構子實體化,靜態工廠方法實體化,實體工廠實體化
+2.簡述基於註解的裝配方式的基本用法
+創建Bean實體類別,配置Bean所在的註解路徑後spring自動掃描路徑下所有Bean類別並解析
+3.@Autowired 和@Resource 有什麼分別?
+Autowired透過成員類型,方法與建構子進行自動裝配.
+Resource透過名稱進行裝配,若沒有找到名稱則使用類型,方法與建構子裝配.
+4.Bean的默認作用域是( C )?
+A.page B.request C.singleton D.prototype
+5.下面片段程式碼使用@Controller註解裝配了Bean,而ID是( B )
+@Controller
+public class TestController{...}
+A.TestController B.testController C.無 D.任意名稱
