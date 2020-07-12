@@ -5,10 +5,13 @@
  */
 package ch04springAop.bookExample.dynamic.jdk;
 
+import org.springframework.stereotype.Repository;
+
 /**
  *
  * @author jason
  */
+@Repository("testDao")
 public class TestDaoImpl implements TestDao{
 
     @Override

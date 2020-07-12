@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="Big5"?>
+<beans  xmlns="http://www.springframework.org/schema/beans"
+        xmlns:aop="http://www.springframework.org/schema/aop"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop.xsd">
+    <!-- 定義目標對象 使用 ch04springAop.bookExample.dynamic.jdk 的 TestDaoImpl -->
+    <bean id="testDao" class="ch04springAop.bookExample.dynamic.jdk.TestDaoImpl"/>
+    <!-- 創建一個切面 -->
+    <bean id="myAspect" class="ch04springAop.bookExample.aspectj.xml.MyAsprct"/>
+    <!-- 配置aop -->
+    <aop:config>
+        <!-- 配置切面 -->
+        <aop:aspect ref="myAspect">
+            <!-- 配置切入點 通知那些增強方法 -->
+            <aop:pointcut id="myPointCut" expression="execution(* *.*.dynamic.jdk.*.*(..))"/>
+            <!-- 將通知與切入點關聯 -->
+            <!-- 關聯前置通知 -->
+            <aop:before method="before" pointcut-ref="myPointCut"/>
+            <!-- 關聯後置返回通知 在目標方法執行成功後執行 -->
+            <aop:after-returning method="afterReturning" pointcut-ref="myPointCut"/>
+            <!-- 關聯環繞通知 -->
+            <aop:around method="around" pointcut-ref="myPointCut"/>
+            <!-- 關聯異常通知 沒異常發生時不會增強 throwing屬性設定通知的第二個參數名稱-->
+            <aop:after-throwing method="except" pointcut-ref="myPointCut" throwing="e"/>
+            <!-- 關聯後置最終通知 不管目標方法是否成功都要執行 -->
+            <aop:after method="after" pointcut-ref="myPointCut"/>
+        </aop:aspect>
+    </aop:config>
+</beans>

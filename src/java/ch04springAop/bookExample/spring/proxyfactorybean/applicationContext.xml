@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="Big5"?>
+<beans  xmlns="http://www.springframework.org/schema/beans" 
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd">
+    <!-- 定義目標對象 使用 ch04springAop.bookExample.dynamic.jdk 的 TestDaoImpl -->
+    <bean id="testDao" class="ch04springAop.bookExample.dynamic.jdk.TestDaoImpl"/>
+    <!-- 創建一個切面 -->
+    <bean id="myAspect" class="ch04springAop.bookExample.spring.proxyfactorybean.MyAspect"/>
+    <!-- 使用spring代理工廠定義一個名為testDaoProxy的代理對象 -->
+    <bean id="testDaoProxy" class="org.springframework.aop.framework.ProxyFactoryBean">
+        <!-- 指定代理實現接口 -->
+        <property name="proxyInterfaces" value="ch04springAop.bookExample.dynamic.jdk.TestDao"/>
+        <!-- 指定目標對象 -->
+        <property name="target" ref="testDao"/>
+        <!-- 指定切面 織入環繞通知 -->
+        <property name="interceptorNames" value="myAspect"/>
+        <!-- 指定代理方式 true指定為CGLIB代理 默認為false,JDK代理 -->
+        <property name="proxyTargetClass" value="true"/>
+    </bean>
+</beans>
+         
