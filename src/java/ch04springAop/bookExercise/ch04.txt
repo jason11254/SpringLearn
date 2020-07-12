@@ -1,0 +1,8 @@
+什麼是AOP? AOP有那些術語? 為啥要學AOP編程?
+面相切面編程
+切面Aspect 連接點Joinpoint 切入點PointCut 通知Advice 引入Introduction 目標對象Target 代理Proxy 織入weaving
+解決OOP難以維護的缺點
+在JAVA中那些常用的動態代理技術?
+JDK與CGLIB
+AspectJ框架的aop開發方式有哪幾種?
+XML配置與註解配置
